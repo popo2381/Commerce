@@ -27,7 +27,7 @@ public class Main {
         Category food = new Category("식품");
         categories.add(food);
         // 커머스 플랫폼 생성
-        CommerceSystem system = new CommerceSystem(categories, customer);
+        CommerceSystem system = new CommerceSystem(categories, customer, scanner);
         // 플랫폼 실행
         system.start();
     }

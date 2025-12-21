@@ -13,6 +13,16 @@ public class Cart {
     public boolean isEmpty() {
         return items.isEmpty();
     }
+    public List<CartItem> getItems() {
+        return items;
+    }
+    public int getItemsPrice() {
+        int itemsPrice = 0;
+        for (CartItem item : items) {
+            itemsPrice += item.getItemPrice();
+        }
+        return itemsPrice;
+    }
     public boolean addItems(Product product, int quantity) {
         for (CartItem item : items) {
             if(item.getProduct().equals(product)) {
@@ -27,15 +37,5 @@ public class Cart {
             return false;
         items.add(new CartItem(product, quantity));
         return true;
-    }
-    public List<CartItem> getItems() {
-        return items;
-    }
-    public int getItemsPrice() {
-        int itemsPrice = 0;
-        for (CartItem item : items) {
-            itemsPrice += item.getItemPrice();
-        }
-        return itemsPrice;
     }
 }
