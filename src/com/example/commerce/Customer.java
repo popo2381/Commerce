@@ -14,7 +14,7 @@ public class Customer {
     public String getName() {
         return name;
     }
-    public String grade(){
+    public String getGrade(){
         return grade;
     }
 }

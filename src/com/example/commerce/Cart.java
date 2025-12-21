@@ -1,0 +1,41 @@
+package com.example.commerce;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Cart {
+    private List<CartItem> items = new ArrayList<>();
+    private Customer customer;
+
+    public Cart(Customer customer) {
+        this.customer = customer;
+    }
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
+    public boolean addItems(Product product, int quantity) {
+        for (CartItem item : items) {
+            if(item.getProduct().equals(product)) {
+                if(item.getQuantity() + quantity > product.getstock()) {
+                    return false;
+                }
+                item.increase(quantity);
+                return true;
+            }
+        }
+        if(quantity > product.getstock())
+            return false;
+        items.add(new CartItem(product, quantity));
+        return true;
+    }
+    public List<CartItem> getItems() {
+        return items;
+    }
+    public int getItemsPrice() {
+        int itemsPrice = 0;
+        for (CartItem item : items) {
+            itemsPrice += item.getItemPrice();
+        }
+        return itemsPrice;
+    }
+}

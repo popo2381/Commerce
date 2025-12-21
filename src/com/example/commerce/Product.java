@@ -4,13 +4,13 @@ public class Product {
     private String name;
     private String description;
     private int price;
-    private int quantity;
+    private int stock;
 
-    public Product(String name, String description, int price, int quantity) {
+    public Product(String name, String description, int price, int stock) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.quantity = quantity;
+        this.stock = stock;
     }
     public String getName() {
         return name;
@@ -21,7 +21,11 @@ public class Product {
     public int getPrice() {
         return price;
     }
-    public int getQuantity() {
-        return quantity;
+    public int getstock() {
+        return stock;
+    }
+    public int decraseStock(int quantity) {
+        stock -= quantity;
+        return stock;
     }
 }
