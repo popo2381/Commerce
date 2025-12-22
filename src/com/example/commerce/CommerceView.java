@@ -1,6 +1,7 @@
 package com.example.commerce;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CommerceView {
     // 플랫폼 메인 메뉴
@@ -11,33 +12,38 @@ public class CommerceView {
             System.out.println(i++ + ". " + c.getName());
         }
         System.out.println("0. 종료   | 프로그램 종료");
+        System.out.println("6. 관리자 모드");
         // 주문 메뉴
         if (!cart.isEmpty()) {
             System.out.println("\n[ 주문 관리 ]");
             System.out.println("4. 장바구니 확인      | 장바구니를 확인 후 주문합니다.");
             System.out.println("5. 주문 취소        | 진행중인 주문을 취소합니다.");
         }
-        System.out.println("6. 관리자 모드");
     }
 
     public void menuCategory(Category category) {
         System.out.println("[ " + category.getName() + " 카테고리 ]");
+        System.out.println("1. 전체 상품 보기");
+        System.out.println("2. 100만원 이하 상품");
+        System.out.println("3. 100만원 초과 상품");
+        System.out.println("0. 뒤로가기");
+    }
+    public void printProduct(List<Product> products) {
         int i = 1;
-        for (Product p : category.getProducts()) {
+        for (Product p : products) {
             System.out.printf(
                     "%d. %-15s | %,9d원 | %-15s | 재고: %d개%n",
-                    i++, p.getName(), p.getPrice(), p.getDescription(), p.getstock()
+                    i++, p.getName(), p.getPrice(), p.getDescription(), p.getStock()
             );
         }
         System.out.println("0. 뒤로가기");
     }
-
     public void selectedProduct(Product selected) {
         System.out.println(
                 "선택한 상품: " + selected.getName()
                         + " | " + String.format("%,d원", selected.getPrice())
                         + " | " + selected.getDescription()
-                        + " | 재고: " + selected.getstock() + "개\n");
+                        + " | 재고: " + selected.getStock() + "개\n");
         // 장바구니에 추가
         System.out.println("위 상품을 장바구니에 추가하시겠습니까?");
         System.out.println("1. 확인       2. 취소");
@@ -95,7 +101,7 @@ public class CommerceView {
         for (Product p : selected.getProducts()) {
             System.out.printf(
                     "%d. %-15s | %,9d원 | %-15s | 재고: %d개%n",
-                    i++, p.getName(), p.getPrice(), p.getDescription(), p.getstock()
+                    i++, p.getName(), p.getPrice(), p.getDescription(), p.getStock()
             );
         }
     }
@@ -123,10 +129,18 @@ public class CommerceView {
             for (Product p : c.getProducts()) {
                 System.out.printf(
                         "%d. %-15s | %,9d원 | %-15s | 재고: %d개%n",
-                        i++, p.getName(), p.getPrice(), p.getDescription(), p.getstock()
+                        i++, p.getName(), p.getPrice(), p.getDescription(), p.getStock()
                 );
             }
             System.out.println("==========================");
         }
+    }
+    public void gradeCustomer() {
+        System.out.println("[ 고객 등급 ]");
+        System.out.println("1. BRONZE   :  0% 할인");
+        System.out.println("2. SILVER   :  5% 할인");
+        System.out.println("3. GOLD     : 10% 할인");
+        System.out.println("4. PLATINUM : 15% 할인");
+        System.out.println("5. DIAMOND  : 30% 할인");
     }
 }

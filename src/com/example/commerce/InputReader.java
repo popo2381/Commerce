@@ -15,6 +15,8 @@ public class InputReader {
                 return Integer.parseInt(input);
             } catch (NumberFormatException e) {
                 System.out.println("숫자를 입력해주세요.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("다시 입력해주세요.");
             }
         }
     }
