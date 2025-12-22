@@ -28,4 +28,16 @@ public class Product {
         stock -= quantity;
         return stock;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    public void setDesc(String desc) {
+        this.description = desc;
+    }
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
 }
