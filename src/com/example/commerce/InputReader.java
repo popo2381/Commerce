@@ -27,4 +27,14 @@ public class InputReader {
             System.out.println(message);
         }
     }
+    public String readLine(String message) {
+        while(true) {
+            System.out.print(message);
+            String input = scanner.nextLine().trim();
+            if (!input.isEmpty()) {
+                return input;
+            }
+            System.out.println("다시 입력해주세요.");
+        }
+    }
 }
