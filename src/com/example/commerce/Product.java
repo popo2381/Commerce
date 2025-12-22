@@ -21,7 +21,7 @@ public class Product {
     public int getPrice() {
         return price;
     }
-    public int getstock() {
+    public int getStock() {
         return stock;
     }
     public int decraseStock(int quantity) {

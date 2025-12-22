@@ -26,16 +26,27 @@ public class Cart {
     public boolean addItems(Product product, int quantity) {
         for (CartItem item : items) {
             if(item.getProduct().equals(product)) {
-                if(item.getQuantity() + quantity > product.getstock()) {
+                if(item.getQuantity() + quantity > product.getStock()) {
                     return false;
                 }
                 item.increase(quantity);
                 return true;
             }
         }
-        if(quantity > product.getstock())
+        if(quantity > product.getStock())
             return false;
         items.add(new CartItem(product, quantity));
         return true;
+    }
+    public boolean compareItem(Product product) {
+        for (CartItem item : items) {
+            if(item.getProduct().equals(product)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public void removeItem(Product product) {
+        items.removeIf(i -> i.getProduct().equals(product));
     }
 }

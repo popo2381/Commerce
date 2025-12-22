@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         // 고객 추가
-        Customer customer = new Customer("janet", "janet@address.com", "bronze");
+        Customer customer = new Customer("janet", "janet@address.com", Grade.BRONZE);
         // 카테고리 생성
         List<Category> categories = new ArrayList<>();
         // 전자제품 카테고리 생성
