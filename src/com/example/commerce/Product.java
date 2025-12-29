@@ -24,7 +24,7 @@ public class Product {
     public int getStock() {
         return stock;
     }
-    public int decraseStock(int quantity) {
+    public int decreaseStock(int quantity) {
         stock -= quantity;
         return stock;
     }

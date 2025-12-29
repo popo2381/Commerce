@@ -3,7 +3,7 @@ package com.example.commerce;
 import java.util.Scanner;
 
 public class InputReader {
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public InputReader(Scanner scanner) {
         this.scanner = scanner;

@@ -7,8 +7,8 @@ public enum Grade {
     PLATINUM("PLATINUM", 15),
     DIAMOND("DIAMOND", 30);
 
-    private String label;
-    private int discountRate;
+    private final String label;
+    private final int discountRate;
 
     Grade(String label, int discountRate) {
         this.label = label;

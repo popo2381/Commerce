@@ -1,9 +1,9 @@
 package com.example.commerce;
 
 public class Customer {
-    private String name;
-    private String email;
-    private Grade grade;
+    private final String name;
+    private final String email;
+    private final Grade grade;
 
     public Customer(String name, String email, Grade grade) {
         this.name = name;
