@@ -4,14 +4,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CommerceSystem {
-    private List<Category> categories;
-    private Customer customer;
-    private Cart cart;
-    private InputReader input;
-    private CommerceView view = new CommerceView();
-    private OrderService orderService = new OrderService();
-    private AdminMode admin = new AdminMode();
-    private ProductService productService = new ProductService();
+    private final List<Category> categories;
+    private final Customer customer;
+    private final Cart cart;
+    private final InputReader input;
+    private final CommerceView view = new CommerceView();
+    private final OrderService orderService = new OrderService();
+    private final AdminMode admin = new AdminMode();
+    private final ProductService productService = new ProductService();
 
     public CommerceSystem(List<Category> categories, Customer customer, Scanner scanner) {
         this.categories = categories;
@@ -21,10 +21,17 @@ public class CommerceSystem {
     }
     // 커머스 플랫폼 시스템 실행
     public void start() {
+        int MENU_ELECTRONICS = 1;
+        int MENU_CLOTHING = 2;
+        int MENU_FOOD = 3;
+        int MENU_CHECKOUT = 4;
+        int MENU_ORDER_CANCEL = 5;
+        int MENU_ADMIN = 6;
+        int MENU_EXIT = 0;
         while(true) {
             view.platformMain(categories, cart); // 플랫폼 메인 메뉴
             int select = input.readInt();
-            if(select == 0) {
+            if(select == MENU_EXIT) {
                 System.out.println("커머스 플랫폼을 종료합니다.");
                 break;
             }
@@ -33,16 +40,16 @@ public class CommerceSystem {
                 runCategory(selected);
                 continue;
             }
-           if(select == 4 && !cart.isEmpty()) {
+           if(select == MENU_CHECKOUT && !cart.isEmpty()) {
                runCheckout();
                continue;
             }
-           if(select == 5 && !cart.isEmpty()) {
+           if(select == MENU_ORDER_CANCEL && !cart.isEmpty()) {
                cart.getItems().clear();
                System.out.println("진행중인 주문이 취소되었습니다.\n");
                continue;
             }
-           if (select == 6) {
+           if (select == MENU_ADMIN) {
                 runAdminMode();
                 continue;
            }
@@ -210,7 +217,7 @@ public class CommerceSystem {
                     if (select >= 1 && select <= categories.size()) {
                         Category selected = categories.get(select-1);
                         if(!selected.getProducts().isEmpty()) {
-                            view.ProductInfo(selected);
+                            view.productInfo(selected);
                             System.out.print("수정할 상품번호를 입력해주세요: ");
                             select = (input.readInt());
                             if (select >= 1 && select <= selected.getProducts().size()) {
@@ -254,7 +261,7 @@ public class CommerceSystem {
                     if (select >= 1 && select <= categories.size()) {
                         Category selected = categories.get(select - 1);
                         if(!selected.getProducts().isEmpty()) {
-                            view.ProductInfo(selected);
+                            view.productInfo(selected);
                             System.out.print("삭제할 상품번호를 입력해주세요: ");
                             select = (input.readInt());
                             if (select >= 1 && select <= selected.getProducts().size()) {

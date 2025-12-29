@@ -7,7 +7,7 @@ public class OrderService {
         for (CartItem item : cart.getItems()) {
             Product p = item.getProduct();
             int before = p.getStock();
-            p.decraseStock(item.getQuantity());
+            p.decreaseStock(item.getQuantity());
             System.out.println(p.getName() + "의 재고가 " + before + "개 -> " + p.getStock() + "개로 업데이트 되었습니다.\n");
         }
         cart.getItems().clear();

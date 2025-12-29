@@ -1,7 +1,6 @@
 package com.example.commerce;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class CommerceView {
     // 플랫폼 메인 메뉴
@@ -96,7 +95,7 @@ public class CommerceView {
         }
         System.out.println("0. 뒤로가기");
     }
-    public void ProductInfo(Category selected) {
+    public void productInfo(Category selected) {
         int i = 1;
         for (Product p : selected.getProducts()) {
             System.out.printf(
